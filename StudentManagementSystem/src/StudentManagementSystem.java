@@ -10,7 +10,7 @@ public class StudentManagementSystem {
      */
     public static void addStudent(String name) {
         if (students.containsKey(name)) {
-            System.out.println("Error: Student with name " + name + " already exists");
+            throw new IllegalStateException("Error: Student with name " + name + " already exists");
         } else {
             students.put(name, new Student(name));
             System.out.println("Student with name " + name + " added");
@@ -20,17 +20,27 @@ public class StudentManagementSystem {
     /**
      * add grade to a specific student
      * @param name object to find specific student in the system
-     * @param grade object to give a grade to a specific student
+     * @param gradeInput string containing grades separated by commas
      */
-    public static void recordGrade(String name, double grade) {
+    public static void recordGrade(String name, String gradeInput) {
         Student student = students.get(name);
         if (student == null) {
-            System.out.println("Error: Student with name " + name + " does not exist");
-        } else if (grade < 0 || grade > 100) {
-            System.out.println("Error: Grade must be between 0 and 100");
+            throw new IllegalArgumentException("Error: Student with name " + name + " does not exist");
         } else {
-            student.addGrade(grade);
-            System.out.println("Grade added for student: " + name);
+            String[] gradesArray = gradeInput.split(",");
+            for (String gradeString : gradesArray) {
+                try {
+                    double grade = Double.parseDouble(gradeString.trim());
+                    if (grade < 0 || grade > 100) {
+                        throw new IllegalArgumentException("Error: Grade " + grade + " must be between 0 and 100.");
+                    } else {
+                        student.addGrade(grade);
+                    }
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Error: Invalid grade '" + gradeString.trim() + "'. Please enter valid numbers.");
+                }
+            }
+            System.out.println("Grades added for student: " + name);
         }
     }
 

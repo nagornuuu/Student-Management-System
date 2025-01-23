@@ -22,17 +22,21 @@ public class Main {
                     case "1":
                         System.out.print("Enter Student name: ");
                         String name = sc.nextLine();
-                        StudentManagementSystem.addStudent(name);
+                        try {
+                            StudentManagementSystem.addStudent(name);
+                        } catch (IllegalStateException e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case "2":
                         System.out.print("Enter Student name: ");
                         name = sc.nextLine();
-                        System.out.print("Enter grade: ");
+                        System.out.print("Enter grade(comma-separated): ");
+                        String gradesInput = sc.nextLine();
                         try {
-                            double grade = Double.parseDouble(sc.nextLine());
-                            StudentManagementSystem.recordGrade(name, grade);
-                        } catch (NumberFormatException e) {
-                            System.out.println("Error: Please enter a valid number grade");
+                            StudentManagementSystem.recordGrade(name, gradesInput);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println(e.getMessage());
                         }
                         break;
                     case "3":
