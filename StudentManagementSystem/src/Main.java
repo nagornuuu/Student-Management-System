@@ -4,9 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
-
         System.out.println("Welcome to the Student Management System");
-
         while (flag) {
             System.out.println("\nMenu:" +
                                "\n1. Add Student" +
