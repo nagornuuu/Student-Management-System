@@ -2,13 +2,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentManagementSystem {
-    private Map<String, Student> students;
+    private static Map<String, Student> students = new HashMap<>();
 
-    public StudentManagementSystem() {
-        this.students = new HashMap<>();
-    }
-
-    public void addStudent(String name) {
+    public static void addStudent(String name) {
         if (students.containsKey(name)) {
             System.out.println("Error: Student with name " + name + " already exists");
         } else {
@@ -17,7 +13,7 @@ public class StudentManagementSystem {
         }
     }
 
-    public void recordGrade(String name, double grade) {
+    public static void recordGrade(String name, double grade) {
         Student student = students.get(name);
         if (student == null) {
             System.out.println("Error: Student with name " + name + " does not exist");
@@ -29,7 +25,7 @@ public class StudentManagementSystem {
         }
     }
 
-    public void studentDetails(String name) {
+    public static void studentDetails(String name) {
         Student student = students.get(name);
         if (student == null) {
             System.out.println("Error: Student with name " + name + " does not exist");
@@ -38,7 +34,7 @@ public class StudentManagementSystem {
         }
     }
 
-    public void displayAllStudents() {
+    public static void displayAllStudents() {
         if (students.isEmpty()) {
             System.out.println("No students in the system");
         } else {
@@ -48,7 +44,7 @@ public class StudentManagementSystem {
         }
     }
 
-    public void displayGoodStudents(double threshold) {
+    public static void displayGoodStudents(double threshold) {
         System.out.println("Students with an average grade above " + threshold + ": ");
         boolean found = false;
         for (Student student : students.values()) {
