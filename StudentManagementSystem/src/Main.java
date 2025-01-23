@@ -9,12 +9,12 @@ public class Main {
 
         while (flag) {
             System.out.println("\nMenu:" +
-                    "\n1. Add Student" +
-                    "\n2. Record Grade" +
-                    "\n3. View student details" +
-                    "\n4. Display all students" +
-                    "\n5. View High-Perdorming student" +
-                    "\n6. Exit");
+                               "\n1. Add Student" +
+                               "\n2. Record Grade" +
+                               "\n3. View student details" +
+                               "\n4. Display all students" +
+                               "\n5. View High-Perdorming student" +
+                               "\n6. Exit");
             System.out.print("Choose an option: ");
 
             try {
