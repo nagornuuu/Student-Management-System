@@ -51,7 +51,7 @@ public class StudentManagementSystem {
     public static void studentDetails(String name) {
         Student student = students.get(name);
         if (student == null) {
-            System.out.println("Error: Student with name " + name + " does not exist");
+            throw new IllegalArgumentException("Error: Student with name " + name + " does not exist");
         } else {
             System.out.println(student);
         }
