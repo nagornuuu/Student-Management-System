@@ -24,7 +24,7 @@ public class Main {
                         String name = sc.nextLine();
                         try {
                             StudentManagementSystem.addStudent(name);
-                        } catch (IllegalStateException e) {
+                        } catch (IllegalArgumentException e) {
                             System.out.println(e.getMessage());
                         }
                         break;

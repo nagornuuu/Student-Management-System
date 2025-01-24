@@ -10,7 +10,7 @@ public class StudentManagementSystem {
      */
     public static void addStudent(String name) {
         if (students.containsKey(name)) {
-            throw new IllegalStateException("Error: Student with name " + name + " already exists");
+            throw new IllegalArgumentException("Error: Student with name " + name + " already exists");
         } else {
             students.put(name, new Student(name));
             System.out.println("Student with name " + name + " added");
